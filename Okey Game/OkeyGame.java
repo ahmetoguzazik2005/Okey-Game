@@ -76,9 +76,42 @@ public class OkeyGame {
      * the current status. Print whether computer picks from tiles or discarded ones.
      */
     public void pickTileForComputer() { // Oğuz
+        char color = lastDiscardedTile.color;
+        int value = lastDiscardedTile.value;
+        boolean controlY = false;
+        boolean controlB = false;
+        boolean controlR = false;
+        boolean controlK = false;
+        boolean [] controlArr = { controlB,controlK,controlR,controlY};
+        for ( int i = 0; players[currentPlayerIndex].getTiles().length > i; i++ ){
+            if ( players[currentPlayerIndex].getTiles()[i].getValue() == value ){
+                if ( players[currentPlayerIndex].getTiles()[i].getColor() =='Y' && players[currentPlayerIndex].getTiles()[i].getColor() != color){
+                    controlY = true;
+                }else if( players[currentPlayerIndex].getTiles()[i].getColor() =='B' && players[currentPlayerIndex].getTiles()[i].getColor() != color){
+                    controlB = true;
+                }else if (players[currentPlayerIndex].getTiles()[i].getColor() =='R' && players[currentPlayerIndex].getTiles()[i].getColor() != color){
+                    controlR = true;
 
+                }else if(players[currentPlayerIndex].getTiles()[i].getColor() =='K' && players[currentPlayerIndex].getTiles()[i].getColor() != color){
+                    controlK = true;
+                }
+            }
+        }
+        int booleanCounter = 0;
+        for ( int i = 0; i < controlArr.length; i++ ){
+            if ( controlArr[i] == true ){
+                booleanCounter++;
+            }
+        }
+        if( booleanCounter >= 2 ){
+            getLastDiscardedTile();
+            System.out.println("Computer picked from the lastDiscardedTile.");
+
+        }else{
+            getTopTile();
+            System.out.println("Computer picked from the tiles array.");
+        } 
     }
-
     /*
      * TODO: Current computer player will discard the least useful tile.
      * this method should print what tile is discarded since it should be
@@ -86,6 +119,10 @@ public class OkeyGame {
      * the single tiles and tiles that contribute to the smallest chains.
      */
     public void discardTileForComputer() { // Oğuz
+        for ( int i = 0; players[currentPlayerIndex].getTiles().length > i; i++ ){
+
+        }
+        
         
     }
 
