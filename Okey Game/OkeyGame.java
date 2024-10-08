@@ -1,3 +1,4 @@
+import java.util.*;
 public class OkeyGame {
 
     Player[] players;
@@ -119,11 +120,109 @@ public class OkeyGame {
      * the single tiles and tiles that contribute to the smallest chains.
      */
     public void discardTileForComputer() { // Oğuz
-        for ( int i = 0; players[currentPlayerIndex].getTiles().length > i; i++ ){
+        // Copies
+        Tile[] playerTiles = players[currentPlayerIndex].getTiles();
+        int position = 0;
+        int lengthOfChain = 1;
+        ArrayList <Integer> indexesOf = new ArrayList<>();
+        ArrayList <Integer> howManyCopy = new ArrayList<>(); 
+        while(position < playerTiles.length - 1){
+            if(playerTiles[position].getValue() == playerTiles[position + 1].getValue() && playerTiles[position].getColor() != playerTiles[position + 1].getColor()){
+                position++;
+            }else if(playerTiles[position].getValue() == playerTiles[position + 1].getValue() && playerTiles[position].getColor() == playerTiles[position + 1].getColor()){
+                position++;
+                lengthOfChain++;
+            }else if(playerTiles[position].getValue() != playerTiles[position + 1].getValue()){ 
+                if(lengthOfChain >= 2){
+                    indexesOf.add(position);
+                    howManyCopy.add(lengthOfChain);
+                }
+                lengthOfChain = 1;
+                position++;
+            }           
+        }  
+        for (int i = 0; i < howManyCopy.size() - 1; i++) { //Sorting the copies lengths and one the copies indexes
+            for (int j = 0; j < howManyCopy.size() - 1 - i; j++) {
+                if (howManyCopy.get(j) < howManyCopy.get(j + 1)) {
+                    int temp = howManyCopy.get(j);
+                    howManyCopy.set(j, howManyCopy.get(j + 1));
+                    howManyCopy.set(j + 1, temp);
 
+                    int temp2 = indexesOf.get(j);
+                    indexesOf.set(j, indexesOf.get(j + 1));
+                    indexesOf.set(j +1, temp2);
+
+                }
+            }
         }
-        
-        
+        if ( howManyCopy.get(0) >= 2){
+            System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+            discardTile(indexesOf.get(0));
+            return;
+        }
+        //Single tiles
+        position = 0;
+        lengthOfChain = 1;
+        indexesOf.clear();
+        while(position < playerTiles.length - 1){
+            if(playerTiles[position].getValue() == playerTiles[position + 1].getValue() && playerTiles[position].getColor() != playerTiles[position + 1].getColor()){
+                position++;
+                lengthOfChain++;
+            }else if(playerTiles[position].getValue() == playerTiles[position + 1].getValue() && playerTiles[position].getColor() == playerTiles[position + 1].getColor()){
+                position++;
+                lengthOfChain++;
+            }else if(playerTiles[position].getValue() != playerTiles[position + 1].getValue()){ 
+                if(lengthOfChain == 1){
+                    indexesOf.add(position);
+                }
+                lengthOfChain = 1;
+                position++;
+            }           
+        } 
+        if ( indexesOf.size() > 0 ){
+            System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+            discardTile(indexesOf.get(0));
+            return;
+        }
+        // Smallest chains
+        howManyCopy.clear();
+        position = 0;
+        lengthOfChain = 1;
+        indexesOf.clear();
+        while(position < playerTiles.length - 1){
+            if(playerTiles[position].getValue() == playerTiles[position + 1].getValue() && playerTiles[position].getColor() != playerTiles[position + 1].getColor()){
+                position++;
+                lengthOfChain++;
+            }else if(playerTiles[position].getValue() == playerTiles[position + 1].getValue() && playerTiles[position].getColor() == playerTiles[position + 1].getColor()){
+                position++;
+            }else if(playerTiles[position].getValue() != playerTiles[position + 1].getValue()){ 
+                if(lengthOfChain > 1){
+                    indexesOf.add(position);
+                    howManyCopy.add(lengthOfChain);
+                }
+                lengthOfChain = 1;
+                position++;
+            }           
+        } 
+        for (int i = 0; i < howManyCopy.size() - 1; i++) { //Sorting the chains lengths and one the element of the chains index
+            for (int j = 0; j < howManyCopy.size() - 1 - i; j++) {
+                if (howManyCopy.get(j) > howManyCopy.get(j + 1)) {
+                    int temp = howManyCopy.get(j);
+                    howManyCopy.set(j, howManyCopy.get(j + 1));
+                    howManyCopy.set(j + 1, temp);
+
+                    int temp2 = indexesOf.get(j);
+                    indexesOf.set(j, indexesOf.get(j + 1));
+                    indexesOf.set(j +1, temp2);
+
+                }
+            }
+        }
+        if ( indexesOf.size() > 0 ){
+            System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+            discardTile(indexesOf.get(0));
+            return;
+        }
     }
 
     /*
