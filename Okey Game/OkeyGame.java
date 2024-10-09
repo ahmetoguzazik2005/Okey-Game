@@ -42,7 +42,17 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getLastDiscardedTile(){ // Çağkan
-        return null;
+           public String getLastDiscardedTile() {
+            // Check the lastDiscarded Tile is available
+                if (lastDiscardedTile != null) {
+                // add tile to current player's tile
+                currentPlayer.addTile(lastDiscardedTile); 
+                
+                // return
+                return lastDiscardedTile.toString();
+                } 
+            return null;
+            }
     }
 
     /*
@@ -51,6 +61,20 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getTopTile() { // Çağkan
+        if (tiles == null || tiles.length == 0) { // If tiles are not available to take one
+        return null; // So tiles could not be taken,return null
+        }
+    
+        // Find the tile whose index is biggest(length-1),(it is on the top)
+        Tile topTile = tiles[tiles.length - 1];
+    
+        // Remove the tile from list ,which we took.
+        tiles[tiles.length - 1] = null;
+    
+        // return topTile which we took.
+        if (topTile != null) {
+            return topTile.toString();
+        } 
         return null;
     }
 
