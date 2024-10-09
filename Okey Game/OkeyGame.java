@@ -66,6 +66,13 @@ public class OkeyGame {
      * finished the game, use isWinningHand() method of Player to decide
      */
     public boolean didGameFinish() { //Furkan
+        
+        for(int i=0;i<14;i++){
+            int num = players[getCurrentPlayerIndex()].getTiles()[i].getValue();
+            for(int j=0;j<14;j++){
+                if()
+            }
+        }
         return false;
     }
 
@@ -231,6 +238,12 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) { // Furkan
+        //lastDiscardedTile = players[getCurrentPlayerIndex()].g(tileIndex);
+        for(int i=tileIndex;i<15;i++){
+            players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[tileIndex];
+        }
+        
+        
 
     }
 
