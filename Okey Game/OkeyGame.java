@@ -90,14 +90,21 @@ public class OkeyGame {
      * finished the game, use isWinningHand() method of Player to decide
      */
     public boolean didGameFinish() { //Furkan
-        
-        for(int i=0;i<14;i++){
-            int num = players[getCurrentPlayerIndex()].getTiles()[i].getValue();
-            for(int j=0;j<14;j++){
-                if()
-            }
+
+        // Returns true if a player has winning hand
+        if(players[getCurrentPlayerIndex()].isWinningHand()){
+            return true;
         }
-        return false;
+
+        // Returns true if there is no tile to pull
+        else if(getTopTile().equals(null)&&players[getCurrentPlayerIndex()].getTiles()[14]==null){
+            System.out.println("Game is over ! Stalemate !");
+            return true;
+        }
+        else{
+            return false;
+        }
+        
     }
 
     /*
@@ -262,11 +269,11 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) { // Furkan
-        //lastDiscardedTile = players[getCurrentPlayerIndex()].g(tileIndex);
-        for(int i=tileIndex;i<15;i++){
-            players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[tileIndex];
+        lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
+        for(int i=tileIndex;i<14;i++){
+            players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[i+1];
         }
-        
+        players[getCurrentPlayerIndex()].getTiles()[14]=null;
         
 
     }
