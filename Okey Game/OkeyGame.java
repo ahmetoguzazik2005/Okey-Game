@@ -38,11 +38,11 @@ public class OkeyGame {
         int index = 0;
         for(int i = 0;i<14;i++){ //adds 14 tiles to each person
             for(int j = 0; j<4;j++){
-                (players[j])[i] = tiles[index++];
+                players[j][i] = tiles[index++];
             }
         }
         //adds the last tile of player 1 
-        (players[0])[14] = tiles[index++];
+        players[0][14] = tiles[index++];
 
 
     }
@@ -53,17 +53,19 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getLastDiscardedTile(){ // Çağkan
-           public String getLastDiscardedTile() {
-            // Check the lastDiscarded Tile is available
-                if (lastDiscardedTile != null) {
+           
+        // Check the lastDiscarded Tile is available
+            if (lastDiscardedTile != null) {
+                Player currentPlayer = players[currentPlayerIndex];//hey
+
                 // add tile to current player's tile
                 currentPlayer.addTile(lastDiscardedTile); 
                 
                 // return
                 return lastDiscardedTile.toString();
-                } 
-            return null;
-            }
+            } 
+        return null;
+            
     }
 
     /*
