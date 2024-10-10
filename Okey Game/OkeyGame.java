@@ -58,7 +58,6 @@ public class OkeyGame {
         //adds the last tile of player 1 
         players[0].addTile(tiles[56]);
 
-
     }
 
     /*
@@ -110,16 +109,16 @@ public class OkeyGame {
      */
     public Tile[] shuffleTiles() { 
         Random rand = new Random();
-        Tile[] tile = createTiles();
-        for(int i = 0;i<tile.length;i++){ //replaces tile in order with a tile at random index
+        tiles = createTiles();
+        for(int i = 0;i<tiles.length;i++){ //replaces tile in order with a tile at random index
             //creates random number that doesnt include indexes that has been used in order
-            int randomNum = rand.nextInt(tile.length-i)+i;
+            int randomNum = rand.nextInt(tiles.length-i)+i;
             //replaces tile with the help of temporary variable
-            Tile temp = tile[i];
-            tile[i] = tile[randomNum];
-            tile[randomNum] = temp;
+            Tile temp = tiles[i];
+            tiles[i] = tiles[randomNum];
+            tiles[randomNum] = temp;
         }
-        return tile;
+        return tiles;
     }
 
     /*
