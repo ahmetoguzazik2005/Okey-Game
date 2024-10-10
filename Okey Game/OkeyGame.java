@@ -9,7 +9,13 @@ public class OkeyGame {
     int currentPlayerIndex = 0;
 
     public OkeyGame() {
+        
         players = new Player[4];
+        players[0] = new Player("Player 1");
+        players[1] = new Player("Player 2");
+        players[2] = new Player("Player 3");
+        players[3] = new Player("Player 4");
+
     }
 
     public Tile[] createTiles() {
