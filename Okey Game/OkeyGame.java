@@ -4,6 +4,7 @@ public class OkeyGame {
     Player[] players;
     Tile[] tiles;
     int index = 0;
+    Tile tile1;
 
     Tile lastDiscardedTile;
 
@@ -16,6 +17,7 @@ public class OkeyGame {
         players[1] = new Player("Player 2");
         players[2] = new Player("Player 3");
         players[3] = new Player("Player 4");
+        tile1 = new Tile(30, 'B');// I gave a big number because I want it to be the last on the sorting etc.
 
     }
 
@@ -50,6 +52,10 @@ public class OkeyGame {
         }
         //adds the last tile of player 1 
         players[0].playerTiles[14] = tiles[56];
+        players[1].playerTiles[14] = tile1;//30, 'B'
+        players[2].playerTiles[14] = tile1;//30, 'B'
+        players[3].playerTiles[14] = tile1;//30, 'B'
+
         index++;
         start = false;
 
@@ -91,7 +97,7 @@ public class OkeyGame {
         Tile topTile = tiles[index];
     
         // Remove the tile from list ,which we took.
-        tiles[index] = null;
+        tiles[index] = tile1;
     
         // return topTile which we took.
         if (topTile != null) {
@@ -195,9 +201,10 @@ public class OkeyGame {
      */
     public void discardTileForComputer() { // Oğuz
         // Copies
+        players[currentPlayerIndex].sortThePlayerHand();
+        Tile[]playerTiles = players[currentPlayerIndex].getTiles();
         
-        // Tile[] playerTiles = players[currentPlayerIndex].getTiles();
-        Tile[]playerTiles = players[currentPlayerIndex].getTiles();// just for debugging
+        
         int position = 0;
         int lengthOfChain = 1;
         ArrayList <Integer> indexesOf = new ArrayList<>();
@@ -311,7 +318,7 @@ public class OkeyGame {
         for(int i=tileIndex;i<14;i++){
             players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[i+1];
         }
-        players[getCurrentPlayerIndex()].getTiles()[14]=null;
+        players[getCurrentPlayerIndex()].getTiles()[14] = tile1;
         
 
     }
