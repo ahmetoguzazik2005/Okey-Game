@@ -34,7 +34,7 @@ public class OkeyGame {
      * other players get 14 tiles
      * this method assumes the tiles are already shuffled
      */
-    public void distributeTilesToPlayers(Tile[] tiles){ 
+    public void distributeTilesToPlayers(){ 
         int index = 0;
         for(int i = 0;i<14;i++){ //adds 14 tiles to each person
             for(int j = 0; j<4;j++){
@@ -108,18 +108,18 @@ public class OkeyGame {
    /*
      * TODO: should randomly shuffle the tiles array before game starts
      */
-    public Tile[] shuffleTiles() { 
+    public void shuffleTiles() { 
         Random rand = new Random();
-        tiles = createTiles();
-        for(int i = 0;i<tiles.length;i++){ //replaces tile in order with a tile at random index
+        
+        for(int i = 0; i < tiles.length; i++){ //replaces tile in order with a tile at random index
             //creates random number that doesnt include indexes that has been used in order
-            int randomNum = rand.nextInt(tiles.length-i)+i;
+            int randomNum = rand.nextInt(tiles.length - i)+i;
             //replaces tile with the help of temporary variable
             Tile temp = tiles[i];
             tiles[i] = tiles[randomNum];
             tiles[randomNum] = temp;
         }
-        return tiles;
+
     }
 
     /*

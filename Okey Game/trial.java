@@ -24,7 +24,6 @@ public class trial {
         player1.displayTiles();
         player1.sortThePlayerHand();
        
-        game.discardTileForComputer();
         player1.displayTiles();
         
     }
