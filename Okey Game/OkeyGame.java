@@ -3,6 +3,7 @@ public class OkeyGame {
     Boolean start = true;
     Player[] players;
     Tile[] tiles;
+    int index = 0;
 
     Tile lastDiscardedTile;
 
@@ -41,7 +42,6 @@ public class OkeyGame {
      * this method assumes the tiles are already shuffled
      */
     public void distributeTilesToPlayers(){ 
-        int index = 0;
         for(int j = 0; j<4;j++){ //adds 14 tiles to each person
             for(int i = 0; i < 14; i++){
                 players[j].playerTiles[i] = tiles[index];
@@ -50,6 +50,7 @@ public class OkeyGame {
         }
         //adds the last tile of player 1 
         players[0].playerTiles[14] = tiles[56];
+        index++;
         start = false;
 
     }
@@ -82,19 +83,22 @@ public class OkeyGame {
      */
     public String getTopTile() { // Çağkan
         if (tiles == null || tiles.length == 0) { // If tiles are not available to take one
+            index++;
         return null; // So tiles could not be taken,return null
         }
     
         // Find the tile whose index is biggest(length-1),(it is on the top)
-        Tile topTile = tiles[tiles.length - 1];
+        Tile topTile = tiles[index];
     
         // Remove the tile from list ,which we took.
-        tiles[tiles.length - 1] = null;
+        tiles[index] = null;
     
         // return topTile which we took.
         if (topTile != null) {
+            index ++;
             return topTile.toString();
         } 
+        index++;
         return null;
     }
 
@@ -154,7 +158,7 @@ public class OkeyGame {
         boolean controlR = false;
         boolean controlK = false;
         boolean [] controlArr = { controlB,controlK,controlR,controlY};
-        for ( int i = 0; players[currentPlayerIndex].getTiles().length > i; i++ ){
+        for ( int i = 0; players[currentPlayerIndex].getTiles().length - 1 > i ; i++ ){
             if ( players[currentPlayerIndex].getTiles()[i].getValue() == value ){
                 if ( players[currentPlayerIndex].getTiles()[i].getColor() =='Y' && players[currentPlayerIndex].getTiles()[i].getColor() != color){
                     controlY = true;
@@ -193,7 +197,7 @@ public class OkeyGame {
         // Copies
         
         // Tile[] playerTiles = players[currentPlayerIndex].getTiles();
-        Tile[]playerTiles = trial.player1.getTiles();// just for debugging
+        Tile[]playerTiles = players[currentPlayerIndex].getTiles();// just for debugging
         int position = 0;
         int lengthOfChain = 1;
         ArrayList <Integer> indexesOf = new ArrayList<>();

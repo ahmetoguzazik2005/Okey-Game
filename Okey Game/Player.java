@@ -59,7 +59,7 @@ public class Player {
      */
     public boolean isWinningHand() {// Hidayet
         int position = 0;
-        while(position < playerTiles.length - 1){
+        while(position < playerTiles.length - 2){
             if(playerTiles[position].getValue() == playerTiles[position + 1].getValue() && playerTiles[position].getColor() != playerTiles[position + 1].getColor()){
                 lengthOfChain++;
                 position++;
