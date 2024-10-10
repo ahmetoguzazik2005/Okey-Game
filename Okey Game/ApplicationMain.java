@@ -102,7 +102,15 @@ public class ApplicationMain {
                     game.discardTileForComputer();
                     game.passTurnToNextPlayer();
                 }
+<<<<<<< Updated upstream
 
+=======
+                else{
+                    
+                    // current computer character wins
+                    System.out.println(game.getCurrentPlayerName() + " wins.");
+                }
+>>>>>>> Stashed changes
             }
         }
     }
