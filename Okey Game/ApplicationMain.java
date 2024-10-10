@@ -83,8 +83,7 @@ public class ApplicationMain {
                     game.passTurnToNextPlayer();
                 }
                 else{
-                    // if we finish the hand we win
-                    System.out.println("Congratulations, you win!");
+
                 }
             }
             else{
@@ -103,10 +102,7 @@ public class ApplicationMain {
                     game.discardTileForComputer();
                     game.passTurnToNextPlayer();
                 }
-                else{
-                    // current computer character wins
-                    System.out.println(game.getCurrentPlayerName() + " wins.");
-                }
+
             }
         }
     }
