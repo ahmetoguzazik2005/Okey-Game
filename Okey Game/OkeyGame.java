@@ -157,16 +157,16 @@ public class OkeyGame {
      * the current status. Print whether computer picks from tiles or discarded ones.
      */
     public void pickTileForComputer() { // Oğuz
+        players[currentPlayerIndex].sortThePlayerHand();
         char color = lastDiscardedTile.color;
         int value = lastDiscardedTile.value;
         boolean controlY = false;
         boolean controlB = false;
         boolean controlR = false;
         boolean controlK = false;
-        boolean [] controlArr = { controlB,controlK,controlR,controlY};
         for ( int i = 0; players[currentPlayerIndex].getTiles().length - 1 > i ; i++ ){
             if ( players[currentPlayerIndex].getTiles()[i].getValue() == value ){
-                if ( players[currentPlayerIndex].getTiles()[i].getColor() =='Y' && players[currentPlayerIndex].getTiles()[i].getColor() != color){
+                if ( players[currentPlayerIndex].getTiles()[i].getColor() == 'Y' && players[currentPlayerIndex].getTiles()[i].getColor() != color){
                     controlY = true;
                 }else if( players[currentPlayerIndex].getTiles()[i].getColor() =='B' && players[currentPlayerIndex].getTiles()[i].getColor() != color){
                     controlB = true;
@@ -178,6 +178,7 @@ public class OkeyGame {
                 }
             }
         }
+        boolean [] controlArr = { controlB,controlK,controlR,controlY};
         int booleanCounter = 0;
         for ( int i = 0; i < controlArr.length; i++ ){
             if ( controlArr[i] == true ){
@@ -203,7 +204,6 @@ public class OkeyGame {
         // Copies
         players[currentPlayerIndex].sortThePlayerHand();
         Tile[]playerTiles = players[currentPlayerIndex].getTiles();
-        
         
         int position = 0;
         int lengthOfChain = 1;
@@ -235,14 +235,21 @@ public class OkeyGame {
                     indexesOf.set(j, indexesOf.get(j + 1));
                     indexesOf.set(j +1, temp2);
 
+
+
+        
                 }
             }
         }
-        if ( howManyCopy.get(0) >= 2){
-            System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
-            discardTile(indexesOf.get(0));
-            return;
+        if ( howManyCopy != null ){
+            if ( howManyCopy.get(0) >= 2){
+                System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+                discardTile(indexesOf.get(0));
+                return;
+            }
+
         }
+
         //Single tiles
         position = 0;
         lengthOfChain = 1;
@@ -314,6 +321,7 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) { // Furkan
+        tileIndex = tileIndex - 1;
         lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
         for(int i=tileIndex;i<14;i++){
             players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[i+1];
