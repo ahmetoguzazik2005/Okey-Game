@@ -29,10 +29,16 @@ public class Player {
      * should also update numberOfTiles accordingly.
      * make sure playerTiles are not more than 15 at any time
      */
-    public void addTile(Tile t) {// Hidayet
-        playerTiles[playerTiles.length - 1] = t;
-        sortThePlayerHand();
+    public void addTile(Tile t, boolean start) {// Hidayet
+        if ( start ){
+            playerTiles[playerTiles.length - 1] = t;
+        }else{
+            playerTiles[playerTiles.length - 1] = t;
+            sortThePlayerHand();
+        }
     }
+
+
 
     public void sortThePlayerHand(){
         boolean swapped = true;

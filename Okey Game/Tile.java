@@ -1,5 +1,4 @@
 public class Tile {
-    
     int value;
     char color;
 

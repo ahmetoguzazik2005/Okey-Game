@@ -1,6 +1,6 @@
 import java.util.*;
 public class OkeyGame {
-
+    Boolean start = true;
     Player[] players;
     Tile[] tiles;
 
@@ -39,24 +39,25 @@ public class OkeyGame {
         for(int i = 0;i<14;i++){ //adds 14 tiles to each person
             for(int j = 0; j<4;j++){
                 if ( j == 0 ){
-                    players[0].addTile(tiles[index]);
+                    players[0].addTile(tiles[index], start);
                     index++;
                 }else if ( j == 1 ){
-                    players[1].addTile(tiles[index]);
+                    players[1].addTile(tiles[index], start);
                     index++;
 
                 }else if ( j == 2 ){
-                    players[2].addTile(tiles[index]);
+                    players[2].addTile(tiles[index], start);
                     index++;
 
                 }else if ( j == 3 ){
-                    players[3].addTile(tiles[index]);
+                    players[3].addTile(tiles[index], start);
                     index++;
                 }
             }
         }
         //adds the last tile of player 1 
-        players[0].addTile(tiles[56]);
+        players[0].addTile(tiles[56], start);
+        start = false;
 
     }
 
@@ -72,7 +73,7 @@ public class OkeyGame {
                 Player currentPlayer = players[currentPlayerIndex];//hey
 
                 // add tile to current player's tile
-                currentPlayer.addTile(lastDiscardedTile); 
+                currentPlayer.addTile(lastDiscardedTile, start); 
                 
                 // return
                 return lastDiscardedTile.toString();
