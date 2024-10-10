@@ -23,6 +23,7 @@ public class trial {
         player1.playerTiles = tiles;
         player1.displayTiles();
         player1.sortThePlayerHand();
+        player1.addTile(new Tile(2, 'y'));
        
         player1.displayTiles();
         

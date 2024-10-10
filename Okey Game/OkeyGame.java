@@ -10,6 +10,10 @@ public class OkeyGame {
 
     public OkeyGame() {
         players = new Player[4];
+        players[0] = new Player("");
+        players[1] = new Player("");
+        players[2] = new Player("");
+        players[3] = new Player("");
     }
 
     public Tile[] createTiles() {
@@ -37,13 +41,13 @@ public class OkeyGame {
     public void distributeTilesToPlayers(){ 
         int index = 0;
         for(int i = 0; i < 14; i++){ //adds 14 tiles to each person
-            for(int j = 0; j<4;j++){
-                players[j].addTile(tiles[index], start);
+            for(int j = 0; j< 4;j++){
+                players[j].addTile(tiles[index]);
                 index++;
             }
         }
         //adds the last tile of player 1 
-        players[0].addTile(tiles[56], start);
+        players[0].addTile(tiles[56]);
         start = false;
 
     }
@@ -60,7 +64,7 @@ public class OkeyGame {
                 Player currentPlayer = players[currentPlayerIndex];//hey
 
                 // add tile to current player's tile
-                currentPlayer.addTile(lastDiscardedTile, start); 
+                currentPlayer.addTile(lastDiscardedTile); 
                 
                 // return
                 return lastDiscardedTile.toString();
