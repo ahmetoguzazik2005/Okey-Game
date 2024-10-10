@@ -128,8 +128,9 @@ public class OkeyGame {
      */
     public boolean didGameFinish() { //Furkan
 
-        // Returns true if a player has winning hand
-        if(players[getCurrentPlayerIndex()].isWinningHand()){
+         // Returns true if a player has winning hand
+         if(players[getCurrentPlayerIndex()].isWinningHand()){
+            System.out.println(players[getCurrentPlayerIndex()] + " has won !");
             return true;
         }
 
@@ -141,6 +142,7 @@ public class OkeyGame {
         else{
             return false;
         }
+		
         
     }
 
