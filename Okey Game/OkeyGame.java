@@ -12,7 +12,7 @@ public class OkeyGame {
         players = new Player[4];
     }
 
-    public void createTiles() {
+    public Tile[] createTiles() {
         tiles = new Tile[112];
         int currentTile = 0;
 
@@ -25,6 +25,7 @@ public class OkeyGame {
                 tiles[currentTile++] = new Tile(i,'K');
             }
         }
+        return tiles;
     }
 
     /*
@@ -33,7 +34,17 @@ public class OkeyGame {
      * other players get 14 tiles
      * this method assumes the tiles are already shuffled
      */
-    public void distributeTilesToPlayers(){ // Yusuf
+    public void distributeTilesToPlayers(Tile[] tiles){ 
+        int index = 0;
+        for(int i = 0;i<14;i++){ //adds 14 tiles to each person
+            for(int j = 0; j<4;j++){
+                (players[j])[i] = tiles[index++];
+            }
+        }
+        //adds the last tile of player 1 
+        (players[0])[14] = tiles[index++];
+
+
     }
 
     /*
@@ -42,7 +53,17 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getLastDiscardedTile(){ // Çağkan
-        return null;
+           public String getLastDiscardedTile() {
+            // Check the lastDiscarded Tile is available
+                if (lastDiscardedTile != null) {
+                // add tile to current player's tile
+                currentPlayer.addTile(lastDiscardedTile); 
+                
+                // return
+                return lastDiscardedTile.toString();
+                } 
+            return null;
+            }
     }
 
     /*
@@ -51,14 +72,38 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getTopTile() { // Çağkan
+        if (tiles == null || tiles.length == 0) { // If tiles are not available to take one
+        return null; // So tiles could not be taken,return null
+        }
+    
+        // Find the tile whose index is biggest(length-1),(it is on the top)
+        Tile topTile = tiles[tiles.length - 1];
+    
+        // Remove the tile from list ,which we took.
+        tiles[tiles.length - 1] = null;
+    
+        // return topTile which we took.
+        if (topTile != null) {
+            return topTile.toString();
+        } 
         return null;
     }
 
-    /*
+   /*
      * TODO: should randomly shuffle the tiles array before game starts
      */
-    public void shuffleTiles() { //Yusuf
-
+    public Tile[] shuffleTiles() { 
+        Random rand = new Random();
+        Tile[] tile = createTiles();
+        for(int i = 0;i<tile.length;i++){ //replaces tile in order with a tile at random index
+            //creates random number that doesnt include indexes that has been used in order
+            int randomNum = rand.nextInt(tile.length-i)+i;
+            //replaces tile with the help of temporary variable
+            Tile temp = tile[i];
+            tile[i] = tile[randomNum];
+            tile[randomNum] = temp;
+        }
+        return tile;
     }
 
     /*
@@ -66,7 +111,21 @@ public class OkeyGame {
      * finished the game, use isWinningHand() method of Player to decide
      */
     public boolean didGameFinish() { //Furkan
-        return false;
+
+        // Returns true if a player has winning hand
+        if(players[getCurrentPlayerIndex()].isWinningHand()){
+            return true;
+        }
+
+        // Returns true if there is no tile to pull
+        else if(getTopTile().equals(null)&&players[getCurrentPlayerIndex()].getTiles()[14]==null){
+            System.out.println("Game is over ! Stalemate !");
+            return true;
+        }
+        else{
+            return false;
+        }
+        
     }
 
     /*
@@ -233,6 +292,12 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) { // Furkan
+        lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
+        for(int i=tileIndex;i<14;i++){
+            players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[i+1];
+        }
+        players[getCurrentPlayerIndex()].getTiles()[14]=null;
+        
 
     }
 

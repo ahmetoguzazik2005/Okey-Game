@@ -15,8 +15,7 @@ public class ApplicationMain {
         game.setPlayerName(3, "Ted");
 
         game.createTiles();
-        game.shuffleTiles();
-        game.distributeTilesToPlayers();
+        game.distributeTilesToPlayers(game.shuffleTiles());
 
         // developer mode is used for seeing the computer players hands, to be used for debugging
         System.out.print("Play in developer's mode with other player's tiles visible? (Y/N): ");
