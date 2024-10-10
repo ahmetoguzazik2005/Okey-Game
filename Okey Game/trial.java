@@ -1,9 +1,11 @@
 import java.util.Random;
 // my class for trying my functions whether they work or not 
 public class trial {
+    public static Player player1;
     public static void main(String[] args) {
-        Player player1 = new Player("Hidayet");
+        player1 = new Player("Hidayet");
         Tile[] tiles = new Tile[15];  // Array for 14 tiles
+        OkeyGame game = new OkeyGame();
         int currentTile = 0;
         Random random = new Random();
 
@@ -21,10 +23,9 @@ public class trial {
         player1.playerTiles = tiles;
         player1.displayTiles();
         player1.sortThePlayerHand();
+       
+        game.discardTileForComputer();
         player1.displayTiles();
-        System.out.println(player1.getAndRemoveTile(4));
-        player1.displayTiles();
-        player1.addTile(new Tile(3, 'Y'));
-        player1.displayTiles();
+        
     }
 }

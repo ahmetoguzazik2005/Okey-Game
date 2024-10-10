@@ -7,11 +7,6 @@ public class Player {
     int numberOfChain = 0;// must be cancelled at the end
     int lengthOfChain = 1;
 
-    boolean isThereRed = false;
-    boolean isThereYellow = false;
-    boolean isThereBlack = false;
-    boolean isThereBlue = false; 
-    
     public Player(String name) {
         setName(name);
         playerTiles = new Tile[15]; // there are at most 15 tiles a player owns at any time

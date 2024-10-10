@@ -121,7 +121,9 @@ public class OkeyGame {
      */
     public void discardTileForComputer() { // Oğuz
         // Copies
-        Tile[] playerTiles = players[currentPlayerIndex].getTiles();
+        
+        // Tile[] playerTiles = players[currentPlayerIndex].getTiles();
+        Tile[]playerTiles = trial.player1.getTiles();// just for debugging
         int position = 0;
         int lengthOfChain = 1;
         ArrayList <Integer> indexesOf = new ArrayList<>();
