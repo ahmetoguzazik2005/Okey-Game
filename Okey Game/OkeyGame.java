@@ -11,10 +11,11 @@ public class OkeyGame {
     public OkeyGame() {
         
         players = new Player[4];
-        players[0] = new Player("");
-        players[1] = new Player("");
-        players[2] = new Player("");
-        players[3] = new Player("");
+        players[0] = new Player("Player 1");
+        players[1] = new Player("Player 2");
+        players[2] = new Player("Player 3");
+        players[3] = new Player("Player 4");
+
     }
 
     public Tile[] createTiles() {
@@ -41,14 +42,14 @@ public class OkeyGame {
      */
     public void distributeTilesToPlayers(){ 
         int index = 0;
-        for(int i = 0; i < 14; i++){ //adds 14 tiles to each person
-            for(int j = 0; j< 4;j++){
-                players[j].addTile(tiles[index]);
+        for(int j = 0; j<4;j++){ //adds 14 tiles to each person
+            for(int i = 0; i < 14; i++){
+                players[j].playerTiles[i] = tiles[index];
                 index++;
             }
         }
         //adds the last tile of player 1 
-        players[0].addTile(tiles[56]);
+        players[0].playerTiles[14] = tiles[56];
         start = false;
 
     }
