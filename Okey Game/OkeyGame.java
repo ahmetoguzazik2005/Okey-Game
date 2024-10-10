@@ -9,6 +9,7 @@ public class OkeyGame {
     int currentPlayerIndex = 0;
 
     public OkeyGame() {
+        
         players = new Player[4];
         players[0] = new Player("");
         players[1] = new Player("");
