@@ -38,25 +38,11 @@ public class OkeyGame {
         int index = 0;
         for(int i = 0;i<14;i++){ //adds 14 tiles to each person
             for(int j = 0; j<4;j++){
-                if ( j == 0 ){
-                    players[0].addTile(tiles[index]);
-                    index++;
-                }else if ( j == 1 ){
-                    players[1].addTile(tiles[index]);
-                    index++;
-
-                }else if ( j == 2 ){
-                    players[2].addTile(tiles[index]);
-                    index++;
-
-                }else if ( j == 3 ){
-                    players[3].addTile(tiles[index]);
-                    index++;
-                }
+                (players[j])[i] = tiles[index++];
             }
         }
         //adds the last tile of player 1 
-        players[0].addTile(tiles[56]);
+        (players[0])[14] = tiles[index++];
 
 
     }
@@ -66,7 +52,7 @@ public class OkeyGame {
      * (this simulates picking up the tile discarded by the previous player)
      * it should return the toString method of the tile so that we can print what we picked
      */
-            // Çağkan
+    public String getLastDiscardedTile(){ // Çağkan
            public String getLastDiscardedTile() {
             // Check the lastDiscarded Tile is available
                 if (lastDiscardedTile != null) {
@@ -78,7 +64,7 @@ public class OkeyGame {
                 } 
             return null;
             }
-    
+    }
 
     /*
      * TODO: get the top tile from tiles array for the current player
