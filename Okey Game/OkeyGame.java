@@ -90,7 +90,7 @@ public class OkeyGame {
     public String getTopTile() { // Çağkan
         int maxLength = tiles.length - 2;
 
-        if (/*tiles == null ||*/ tiles.length == 0) { // If tiles are not available to take one
+        if (tiles.length == 0) { // If tiles are not available to take one
             if ( index <= maxLength - 2){
                 index++;
             }
@@ -162,8 +162,6 @@ public class OkeyGame {
      * finished the game, use isWinningHand() method of Player to decide
      */
     public boolean didGameFinish() { //Furkan
-        System.out.println("index: " + index);
-        System.out.println("tiles length: " + tiles.length);
 
          // Returns true if a player has winning hand
          if(players[getCurrentPlayerIndex()].isWinningHand()){
@@ -358,12 +356,11 @@ public class OkeyGame {
      */
     public void discardTile(int tileIndex) { // Furkan
         lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
-        System.out.println(lastDiscardedTile);
 
         for(int i=tileIndex;i<14;i++){
             players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[i+1];
         }
-        players[getCurrentPlayerIndex()].displayTiles();
+        
         
         players[getCurrentPlayerIndex()].getTiles()[14] = tile1;
         

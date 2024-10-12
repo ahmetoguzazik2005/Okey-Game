@@ -9,8 +9,8 @@ public class ApplicationMain {
         Random random = new Random();
 
         System.out.print("Please enter your name: ");
-        //String playerName = sc.next();// debugging
-        String playerName = "oguz";
+        String playerName = sc.next();
+        
 
         game.setPlayerName(0, playerName);
         game.setPlayerName(1, "John");
@@ -23,8 +23,7 @@ public class ApplicationMain {
 
         // developer mode is used for seeing the computer players hands, to be used for debugging
         System.out.print("Play in developer's mode with other player's tiles visible? (Y/N): ");
-        //char devMode = sc.next().charAt(0); for debugging
-        char devMode = 'Y';
+        char devMode = sc.next().charAt(0);
         devMode=Character.toUpperCase(devMode);
         boolean devModeOn = devMode == 'Y';
         
@@ -42,7 +41,6 @@ public class ApplicationMain {
             
             if(currentPlayer == 0) {
                 // this is the human player's turn
-                System.out.println("1");
                 game.displayCurrentPlayersTiles();
                 //game.displayDiscardInformation();
 
@@ -60,8 +58,7 @@ public class ApplicationMain {
 
                 do{
                     System.out.print("Your choice: ");
-                    //playerChoice = sc.nextInt(); // for debugging
-                    playerChoice = random.nextInt(2) + 1; // for debugging
+                    playerChoice = sc.nextInt();
                     
                     if((playerChoice > 2 || playerChoice < 1)&&!firstTurn){
                         System.out.println();
@@ -100,12 +97,10 @@ public class ApplicationMain {
                     // after first turn it is no longer the first turn
                     firstTurn = false;
                 }
-                System.out.println("2");
-                game.displayCurrentPlayersTiles();
+
 
                 gameContinues = !game.didGameFinish();
-                System.out.println("3");
-                game.displayCurrentPlayersTiles();
+
 
                 if(gameContinues) {
                     // make sure the given index is correct, should be 0 <= index <= 14
@@ -113,8 +108,8 @@ public class ApplicationMain {
                         // if game continues we need to discard a tile using the given index by the player
                     System.out.println("Which tile you will discard?");
                     System.out.print("Discard the tile in index: ");
-                    //playerChoice = sc.nextInt();// for debugging
-                    playerChoice = random.nextInt(15) + 0;
+                    playerChoice = sc.nextInt();
+                    
 
                     if(playerChoice  < 0 || playerChoice > 14){
                         System.out.println();
@@ -124,11 +119,8 @@ public class ApplicationMain {
                     }
                     }
                     while(playerChoice  < 0 || playerChoice > 14);
-                    System.out.println("4");
-                    game.displayCurrentPlayersTiles();
                     game.discardTile(playerChoice);
-                    System.out.println("5");
-                    game.displayCurrentPlayersTiles();
+
                     game.passTurnToNextPlayer();
                 }
                 else{
@@ -138,7 +130,6 @@ public class ApplicationMain {
             else{
                 // this is the computer player's turn
                 if(devModeOn) {
-                    System.out.println("6");
                     game.displayCurrentPlayersTiles();
                 }
 
