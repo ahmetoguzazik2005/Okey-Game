@@ -82,6 +82,9 @@ public class ApplicationMain {
                     }
                     else if(playerChoice == 2) {
                         System.out.println("You picked up: " + game.getLastDiscardedTile()); 
+                        game.players[game.currentPlayerIndex].addTile(game.lastDiscardedTile);
+
+
                     }
 
                     // display the hand after picking up new tile
