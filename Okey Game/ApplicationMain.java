@@ -49,7 +49,7 @@ public class ApplicationMain {
 
                 if(!firstTurn) {
                     // after the first turn, player may pick from tile stack or last player's discard
-                    System.out.println("1. Pick From Tiles");
+                    System.out.println("1. Pick From Tiles");  
                     System.out.println("2. Pick From Discard");
                 }
                 else{
