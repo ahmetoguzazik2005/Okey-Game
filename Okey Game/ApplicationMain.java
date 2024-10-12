@@ -52,8 +52,18 @@ public class ApplicationMain {
                     System.out.println("1. Discard Tile");
                 }
 
-                System.out.print("Your choice: ");
-                playerChoice = sc.nextInt();
+                do{
+                    System.out.print("Your choice: ");
+                    playerChoice = sc.nextInt();
+                    if(playerChoice > 2 || playerChoice < 1){
+                        System.out.println();
+                        System.out.println("Invalid choice!!");
+                        System.out.println("Your choice should be 1 or 2");
+                        System.out.println();
+                    }
+                }
+                while(playerChoice > 2 || playerChoice < 1);
+                
 
                 // after the first turn we can pick up
                 if(!firstTurn) {
@@ -76,12 +86,20 @@ public class ApplicationMain {
                 gameContinues = !game.didGameFinish();
 
                 if(gameContinues) {
-                    // if game continues we need to discard a tile using the given index by the player
+                    // make sure the given index is correct, should be 0 <= index <= 14
+                    do{ 
+                        // if game continues we need to discard a tile using the given index by the player
                     System.out.println("Which tile you will discard?");
                     System.out.print("Discard the tile in index: ");
                     playerChoice = sc.nextInt();
-
-                    // TODO: make sure the given index is correct, should be 0 <= index <= 14
+                    if(playerChoice  < 0 || playerChoice > 14){
+                        System.out.println();
+                        System.out.println("Invalid choice!!");
+                        System.out.println("Your choice should be 1 or 2");
+                        System.out.println();
+                    }
+                    }
+                    while(playerChoice  < 0 || playerChoice > 14);
 
                     game.discardTile(playerChoice);
                     game.passTurnToNextPlayer();
