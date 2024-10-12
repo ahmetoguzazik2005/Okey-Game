@@ -88,9 +88,14 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getTopTile() { // Çağkan
+        int maxLength = tiles.length - 2;
+
         if (/*tiles == null ||*/ tiles.length == 0) { // If tiles are not available to take one
-            index++;
-        return null; // So tiles could not be taken,return null
+            if ( index <= maxLength - 2){
+                index++;
+            }
+            return null; // So tiles could not be taken,return null
+            
         }
     
         // Find the tile whose index is biggest(length-1),(it is on the top)
@@ -123,10 +128,14 @@ public class OkeyGame {
             Player currentPlayer = players[currentPlayerIndex];//hey
             currentPlayer.addTile(topTile);
 
-            index ++;
+            if ( index <= maxLength ){
+                index++;
+            }
             return topTile.toString();
         } 
-        index++;
+        if ( index <= maxLength ){
+            index++;
+        }
         return null;
         
     }
@@ -153,6 +162,8 @@ public class OkeyGame {
      * finished the game, use isWinningHand() method of Player to decide
      */
     public boolean didGameFinish() { //Furkan
+        System.out.println("index: " + index);
+        System.out.println("tiles length: " + tiles.length);
 
          // Returns true if a player has winning hand
          if(players[getCurrentPlayerIndex()].isWinningHand()){
@@ -161,7 +172,7 @@ public class OkeyGame {
         }
 
         // Returns true if there is no tile to pull
-        else if(tiles[index]==null ){
+        else if(index >= tiles.length ){
             System.out.println("Game is over ! Stalemate !");
             return true;
         }
