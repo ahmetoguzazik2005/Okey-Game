@@ -161,7 +161,7 @@ public class OkeyGame {
         }
 
         // Returns true if there is no tile to pull
-        else if(tiles[index].equals(null) && players[getCurrentPlayerIndex()].getTiles()[14]==null){
+        else if(tiles[index].equals(null) ){
             System.out.println("Game is over ! Stalemate !");
             return true;
         }
