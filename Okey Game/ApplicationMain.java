@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class ApplicationMain {
@@ -5,9 +6,11 @@ public class ApplicationMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         OkeyGame game = new OkeyGame();
+        Random random = new Random();
 
         System.out.print("Please enter your name: ");
-        String playerName = sc.next();
+        //String playerName = sc.next();// debugging
+        String playerName = "oguz";
 
         game.setPlayerName(0, playerName);
         game.setPlayerName(1, "John");
@@ -20,7 +23,8 @@ public class ApplicationMain {
 
         // developer mode is used for seeing the computer players hands, to be used for debugging
         System.out.print("Play in developer's mode with other player's tiles visible? (Y/N): ");
-        char devMode = sc.next().charAt(0);
+        //char devMode = sc.next().charAt(0); for debugging
+        char devMode = 'Y';
         devMode=Character.toUpperCase(devMode);
         boolean devModeOn = devMode == 'Y';
         
@@ -56,7 +60,9 @@ public class ApplicationMain {
 
                 do{
                     System.out.print("Your choice: ");
-                    playerChoice = sc.nextInt();
+                    //playerChoice = sc.nextInt(); // for debugging
+                    playerChoice = random.nextInt(2) + 1; // for debugging
+                    
                     if((playerChoice > 2 || playerChoice < 1)&&!firstTurn){
                         System.out.println();
                         System.out.println("Invalid choice!!");
@@ -107,7 +113,9 @@ public class ApplicationMain {
                         // if game continues we need to discard a tile using the given index by the player
                     System.out.println("Which tile you will discard?");
                     System.out.print("Discard the tile in index: ");
-                    playerChoice = sc.nextInt();
+                    //playerChoice = sc.nextInt();// for debugging
+                    playerChoice = random.nextInt(15) + 0;
+
                     if(playerChoice  < 0 || playerChoice > 14){
                         System.out.println();
                         System.out.println("Invalid choice!!");
