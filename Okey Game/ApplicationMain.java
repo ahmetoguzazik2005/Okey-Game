@@ -55,13 +55,13 @@ public class ApplicationMain {
                 do{
                     System.out.print("Your choice: ");
                     playerChoice = sc.nextInt();
-                    if((playerChoice > 2 || playerChoice < 1) && (!firstTurn)  ){
+                    if((playerChoice > 2 || playerChoice < 1)&&!firstTurn){
                         System.out.println();
                         System.out.println("Invalid choice!!");
                         System.out.println("Your choice should be 1 or 2");
                         System.out.println();
                     }
-                    else if(playerChoice > 1 || playerChoice < 1){
+                    else if((playerChoice > 1 || playerChoice < 1)&&firstTurn){
                         System.out.println();
                         System.out.println("Invalid choice!!");
                         System.out.println("Your choice should be 1");
