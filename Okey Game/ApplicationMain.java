@@ -30,6 +30,7 @@ public class ApplicationMain {
         boolean firstTurn = true;
         boolean gameContinues = true;
         int playerChoice = -1;
+        int firstRoundBuffer = 0;
 
         while(gameContinues) {
             System.out.println("----------------------------------------------------------------------------------------");
@@ -43,7 +44,7 @@ public class ApplicationMain {
                 // this is the human player's turn
                 game.displayCurrentPlayersTiles();
                 //game.displayDiscardInformation();
-
+                
                 System.out.println("What will you do?");
 
                 if(!firstTurn) {
@@ -57,8 +58,15 @@ public class ApplicationMain {
                 }
 
                 do{
+                    if(firstRoundBuffer>0) {
                     System.out.print("Your choice: ");
                     playerChoice = sc.nextInt();
+                    }
+                    else{
+                        playerChoice = 1;
+                        firstRoundBuffer++;
+                    }
+                    
                     
                     if((playerChoice > 2 || playerChoice < 1)&&!firstTurn){
                         System.out.println();
