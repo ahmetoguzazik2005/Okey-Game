@@ -88,7 +88,7 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getTopTile() { // Çağkan
-        if (tiles == null || tiles.length == 0) { // If tiles are not available to take one
+        if (/*tiles == null ||*/ tiles.length == 0) { // If tiles are not available to take one
             index++;
         return null; // So tiles could not be taken,return null
         }
@@ -98,14 +98,20 @@ public class OkeyGame {
     
         // Remove the tile from list ,which we took.
         tiles[index] = tile1;
+
     
         // return topTile which we took.
         if (topTile != null) {
+
+            Player currentPlayer = players[currentPlayerIndex];//hey
+            currentPlayer.addTile(topTile);
+
             index ++;
             return topTile.toString();
         } 
         index++;
         return null;
+        
     }
 
    /*
@@ -322,7 +328,7 @@ public class OkeyGame {
      */
     public void discardTile(int tileIndex) { // Furkan
         lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
-        for(int i=tileIndex-1;i<14;i++){
+        for(int i=tileIndex;i<14;i++){
             players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[i+1];
         }
         players[getCurrentPlayerIndex()].getTiles()[14] = tile1;

@@ -101,7 +101,7 @@ public class Player {
         System.out.println(playerName + "'s Tiles:");
         for (int i = 0; i < 15; i++) {
             if ( playerTiles[i].getValue() != 30){
-                System.out.print( (i + 1 ) + ")"+playerTiles[i].toString() + " ");
+                System.out.print( (i) + ")"+playerTiles[i].toString() + " ");
             }
             
         }
