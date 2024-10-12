@@ -223,7 +223,7 @@ public class OkeyGame {
                 lengthOfChain++;
             }else if(playerTiles[position].getValue() != playerTiles[position + 1].getValue()){ 
                 if(lengthOfChain >= 2){
-                    indexesOf.add(position);
+                    indexesOf.add(position - 1);
                     howManyCopy.add(lengthOfChain);
                 }
                 lengthOfChain = 1;
@@ -240,17 +240,15 @@ public class OkeyGame {
                     int temp2 = indexesOf.get(j);
                     indexesOf.set(j, indexesOf.get(j + 1));
                     indexesOf.set(j +1, temp2);
-
-
-
         
                 }
             }
         }
-        if ( howManyCopy.isEmpty() ){
+        if ( !howManyCopy.isEmpty() ){
             if ( howManyCopy.get(0) >= 2){
                 System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
                 discardTile(indexesOf.get(0));
+                displayCurrentPlayersTiles();
                 return;
             }
 
@@ -278,6 +276,7 @@ public class OkeyGame {
         if ( indexesOf.size() > 0 ){
             System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
             discardTile(indexesOf.get(0));
+            displayCurrentPlayersTiles();
             return;
         }
         // Smallest chains
@@ -317,6 +316,7 @@ public class OkeyGame {
         if ( indexesOf.size() > 0 ){
             System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
             discardTile(indexesOf.get(0));
+            displayCurrentPlayersTiles();
             return;
         }
     }
