@@ -192,12 +192,14 @@ public class OkeyGame {
             }
         }
         if( booleanCounter >= 2 ){
-            getLastDiscardedTile();
             System.out.println("Computer picked from the lastDiscardedTile.");
+            System.out.println("Picked tile: " + lastDiscardedTile);
+            getLastDiscardedTile();
 
         }else{
-            getTopTile();
             System.out.println("Computer picked from the tiles array.");
+            System.out.println("Picked tile: " + tiles[index]);
+            getTopTile();
         } 
     }
     /*
@@ -333,7 +335,6 @@ public class OkeyGame {
         }
         players[getCurrentPlayerIndex()].getTiles()[14] = tile1;
         
-
     }
 
     public void displayDiscardInformation() {
