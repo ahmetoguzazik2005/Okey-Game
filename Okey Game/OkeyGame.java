@@ -354,7 +354,7 @@ public class OkeyGame {
         }
         players[getCurrentPlayerIndex()].displayTiles();
         
-        //players[getCurrentPlayerIndex()].getTiles()[14] = tile1;
+        players[getCurrentPlayerIndex()].getTiles()[14] = tile1;
         
     }
 
