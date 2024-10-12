@@ -97,7 +97,23 @@ public class OkeyGame {
         Tile topTile = tiles[index];
     
         // Remove the tile from list ,which we took.
-        tiles[index] = tile1;
+        tiles[index] = null;
+        Tile [] tilesUpgraded;
+        int counter = 0;
+        for ( int i = 0; i < tiles.length; i++ ){
+            if ( tiles[i] != null ){
+                counter++;
+            }
+        }
+        int index = 0;
+        tilesUpgraded = new Tile[counter];
+        for ( int i = 0; i < tiles.length; i++ ){
+            if ( tiles[i] != null ){
+                tilesUpgraded[index] = tiles[i];
+                index++;
+            }
+        }
+
 
     
         // return topTile which we took.
