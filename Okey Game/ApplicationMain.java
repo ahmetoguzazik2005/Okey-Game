@@ -38,6 +38,7 @@ public class ApplicationMain {
             
             if(currentPlayer == 0) {
                 // this is the human player's turn
+                System.out.println("1");
                 game.displayCurrentPlayersTiles();
                 //game.displayDiscardInformation();
 
@@ -90,8 +91,12 @@ public class ApplicationMain {
                     // after first turn it is no longer the first turn
                     firstTurn = false;
                 }
+                System.out.println("2");
+                game.displayCurrentPlayersTiles();
 
                 gameContinues = !game.didGameFinish();
+                System.out.println("3");
+                game.displayCurrentPlayersTiles();
 
                 if(gameContinues) {
                     // make sure the given index is correct, should be 0 <= index <= 14
@@ -108,8 +113,10 @@ public class ApplicationMain {
                     }
                     }
                     while(playerChoice  < 0 || playerChoice > 14);
+                    System.out.println("4");
                     game.displayCurrentPlayersTiles();
                     game.discardTile(playerChoice);
+                    System.out.println("5");
                     game.displayCurrentPlayersTiles();
                     game.passTurnToNextPlayer();
                 }
@@ -120,6 +127,7 @@ public class ApplicationMain {
             else{
                 // this is the computer player's turn
                 if(devModeOn) {
+                    System.out.println("6");
                     game.displayCurrentPlayersTiles();
                 }
 
