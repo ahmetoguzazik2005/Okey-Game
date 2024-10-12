@@ -321,7 +321,6 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) { // Furkan
-        //tileIndex = tileIndex - 1;
         lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
         for(int i=tileIndex;i<14;i++){
             players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[i+1];
