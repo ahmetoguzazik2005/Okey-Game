@@ -113,6 +113,7 @@ public class OkeyGame {
                 index++;
             }
         }
+        tiles = tilesUpgraded;
 
 
     
