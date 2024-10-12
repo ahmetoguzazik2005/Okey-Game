@@ -39,7 +39,7 @@ public class ApplicationMain {
             if(currentPlayer == 0) {
                 // this is the human player's turn
                 game.displayCurrentPlayersTiles();
-                game.displayDiscardInformation();
+                //game.displayDiscardInformation();
 
                 System.out.println("What will you do?");
 
@@ -108,8 +108,9 @@ public class ApplicationMain {
                     }
                     }
                     while(playerChoice  < 0 || playerChoice > 14);
-
+                    game.displayCurrentPlayersTiles();
                     game.discardTile(playerChoice);
+                    game.displayCurrentPlayersTiles();
                     game.passTurnToNextPlayer();
                 }
                 else{

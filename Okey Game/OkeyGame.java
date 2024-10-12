@@ -70,10 +70,10 @@ public class OkeyGame {
            
         // Check the lastDiscarded Tile is available
             if (lastDiscardedTile != null) {
-                Player currentPlayer = players[currentPlayerIndex];//hey
+                //Player currentPlayer = players[currentPlayerIndex];//hey
 
                 // add tile to current player's tile
-                currentPlayer.addTile(lastDiscardedTile); 
+                //currentPlayer.addTile(lastDiscardedTile); 
                 
                 // return
                 return lastDiscardedTile.toString();
@@ -194,7 +194,7 @@ public class OkeyGame {
         if( booleanCounter >= 2 ){
             System.out.println("Computer picked from the lastDiscardedTile.");
             System.out.println("Picked tile: " + lastDiscardedTile);
-            getLastDiscardedTile();
+            players[currentPlayerIndex].addTile(lastDiscardedTile);
 
         }else{
             System.out.println("Computer picked from the tiles array.");
@@ -330,10 +330,14 @@ public class OkeyGame {
      */
     public void discardTile(int tileIndex) { // Furkan
         lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
+        System.out.println(lastDiscardedTile);
+
         for(int i=tileIndex;i<14;i++){
             players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[i+1];
         }
-        players[getCurrentPlayerIndex()].getTiles()[14] = tile1;
+        players[getCurrentPlayerIndex()].displayTiles();
+        
+        //players[getCurrentPlayerIndex()].getTiles()[14] = tile1;
         
     }
 
