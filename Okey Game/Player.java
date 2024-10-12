@@ -97,13 +97,41 @@ public class Player {
 
     public void displayTiles() {
         sortThePlayerHand();
+        System.out.println();
         System.out.println(playerName + "'s Tiles:");
         for (int i = 0; i < 15; i++) {
             if ( playerTiles[i].getValue() != 30){
-                System.out.print( (i) + ")"+playerTiles[i].toString() + " ");
+                switch(playerTiles[i].getColor()){
+                    case 'Y':
+                        System.out.print( (i) + ")");
+                        System.out.print("\033[1;33m");
+                        System.out.print(playerTiles[i].toString() + " ");
+                        System.out.print("\033[0m");
+                        break;
+                    case 'B':
+                        System.out.print( (i) + ")");
+                        System.out.print("\033[1;34m");
+                        System.out.print(playerTiles[i].toString() + " ");
+                        System.out.print("\033[0m");
+                        break;
+                    case 'R':
+                        System.out.print( (i) + ")");
+                        System.out.print("\033[1;31m");
+                        System.out.print(playerTiles[i].toString() + " ");
+                        System.out.print("\033[0m");
+                        break;
+                    case 'K':
+                        System.out.print( (i) + ")");
+                        System.out.print("\033[1;90m");
+                        System.out.print(playerTiles[i].toString() + " ");
+                        System.out.print("\033[0m");
+                        break;
+                }
+                
             }
             
         }
+        System.out.println();
         System.out.println();
     }
 

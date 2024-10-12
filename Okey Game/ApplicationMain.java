@@ -88,10 +88,12 @@ public class ApplicationMain {
                 // after the first turn we can pick up
                 if(!firstTurn) {
                     if(playerChoice == 1) {
+                        System.out.println();
                         System.out.println("You picked up: " + game.getTopTile());
                         firstTurn = false;
                     }
                     else if(playerChoice == 2) {
+                        System.out.println();
                         System.out.println("You picked up: " + game.getLastDiscardedTile()); 
                         game.players[game.currentPlayerIndex].addTile(game.lastDiscardedTile);
 
