@@ -105,12 +105,12 @@ public class OkeyGame {
                 counter++;
             }
         }
-        int index = 0;
+        int index2 = 0;
         tilesUpgraded = new Tile[counter];
         for ( int i = 0; i < tiles.length; i++ ){
             if ( tiles[i] != null ){
-                tilesUpgraded[index] = tiles[i];
-                index++;
+                tilesUpgraded[index2] = tiles[i];
+                index2++;
             }
         }
         tiles = tilesUpgraded;
