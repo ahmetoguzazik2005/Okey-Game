@@ -99,7 +99,7 @@ public class Player {
     public void displayTiles() {
         sortThePlayerHand();
         System.out.println(playerName + "'s Tiles:");
-        for (int i = 1; i < 14; i++) {
+        for (int i = 1; i < 15; i++) {
             if ( playerTiles[i].getValue() != 30){
                 System.out.print( (i) + ")"+playerTiles[i].toString() + " ");
             }
