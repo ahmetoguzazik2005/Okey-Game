@@ -103,7 +103,7 @@ public class ApplicationMain {
                     if(playerChoice  < 0 || playerChoice > 14){
                         System.out.println();
                         System.out.println("Invalid choice!!");
-                        System.out.println("Your choice should be 1 or 2");
+                        System.out.println("Your choice should be between 0 - 14");
                         System.out.println();
                     }
                     }
