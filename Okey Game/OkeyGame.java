@@ -156,12 +156,12 @@ public class OkeyGame {
 
          // Returns true if a player has winning hand
          if(players[getCurrentPlayerIndex()].isWinningHand()){
-            System.out.println(players[getCurrentPlayerIndex()] + " has won !");
+            System.out.println(players[getCurrentPlayerIndex()].getName() + " has won !");
             return true;
         }
 
         // Returns true if there is no tile to pull
-        else if(tiles[index].equals(null) ){
+        else if(tiles[index]==null ){
             System.out.println("Game is over ! Stalemate !");
             return true;
         }

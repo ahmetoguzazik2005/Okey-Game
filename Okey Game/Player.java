@@ -5,9 +5,6 @@ public class Player {
     int howManySets;
 
 
-    int numberOfChain = 0;// must be cancelled at the end
-    int lengthOfChain = 1;
-
     public Player(String name) {
         setName(name);
         playerTiles = new Tile[15]; // there are at most 15 tiles a player owns at any time
@@ -59,7 +56,9 @@ public class Player {
      */
     public boolean isWinningHand() {// Hidayet
         int position = 0;
-        while(position < playerTiles.length - 2){
+        int numberOfChain = 0;// must be cancelled at the end
+        int lengthOfChain = 1;
+        while(position < playerTiles.length - 1){
             if(playerTiles[position].getValue() == playerTiles[position + 1].getValue() && playerTiles[position].getColor() != playerTiles[position + 1].getColor()){
                 lengthOfChain++;
                 position++;
