@@ -247,7 +247,7 @@ public class OkeyGame {
                 }
             }
         }
-        if ( howManyCopy != null ){
+        if ( howManyCopy.isEmpty() ){
             if ( howManyCopy.get(0) >= 2){
                 System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
                 discardTile(indexesOf.get(0));
@@ -327,7 +327,6 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) { // Furkan
-        tileIndex = tileIndex - 1;
         lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
         for(int i=tileIndex;i<14;i++){
             players[getCurrentPlayerIndex()].getTiles()[i]=players[getCurrentPlayerIndex()].getTiles()[i+1];
