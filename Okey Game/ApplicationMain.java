@@ -144,6 +144,7 @@ public class ApplicationMain {
 
                 }
             }
+            //
             else{
                 // this is the computer player's turn
                     if(devModeOn) {
