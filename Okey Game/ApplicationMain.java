@@ -131,6 +131,7 @@ public class ApplicationMain {
                     }
                     while(playerChoice  < 0 || playerChoice > 14);
                     game.discardTile(playerChoice);
+                    System.out.println("Player discarded the tile " + game.lastDiscardedTile );
                     game.passTurnToNextPlayer();
                 }
                 else{
