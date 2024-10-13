@@ -225,12 +225,18 @@ public class OkeyGame {
         }
         if( booleanCounter >= 2 ){
             System.out.println("Computer picked from the lastDiscardedTile.");
-            System.out.println("Picked tile: " + lastDiscardedTile);
+            if ( ApplicationMain.devModeOn ){
+                 System.out.println("Picked tile: " + lastDiscardedTile);
+            }
+
             players[currentPlayerIndex].addTile(lastDiscardedTile);
 
         }else{
+            if ( ApplicationMain.devModeOn ){
+                System.out.println("Picked tile: " + tiles[index]);
+            }
             System.out.println("Computer picked from the tiles array.");
-            System.out.println("Picked tile: " + tiles[index]);
+            
             getTopTile();
         } 
     }
@@ -282,7 +288,10 @@ public class OkeyGame {
             if ( howManyCopy.get(0) >= 2){
                 System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
                 discardTile(indexesOf.get(0));
-                displayCurrentPlayersTiles();
+                if ( ApplicationMain.devModeOn ){
+                     displayCurrentPlayersTiles();   
+                }
+                
                 return;
             }
 
