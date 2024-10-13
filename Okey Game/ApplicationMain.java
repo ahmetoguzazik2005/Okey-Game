@@ -42,7 +42,7 @@ public class ApplicationMain {
             
             if(currentPlayer == 0) {
                 // this is the human player's turn
-                game.displayCurrentPlayersTiles();
+                    game.displayCurrentPlayersTiles();
                 //game.displayDiscardInformation();
                 
                 System.out.println("What will you do?");
@@ -101,7 +101,7 @@ public class ApplicationMain {
                     }
 
                     // display the hand after picking up new tile
-                    game.displayCurrentPlayersTiles();
+                        game.displayCurrentPlayersTiles();
                 }
                 else{
                     // after first turn it is no longer the first turn
@@ -139,9 +139,10 @@ public class ApplicationMain {
             }
             else{
                 // this is the computer player's turn
-                if(devModeOn) {
-                    game.displayCurrentPlayersTiles();
-                }
+                    if(devModeOn) {
+                        game.displayCurrentPlayersTiles();
+                    }
+                    
 
                 // computer picks a tile from tile stack or other player's discard
                 game.pickTileForComputer();
@@ -150,7 +151,9 @@ public class ApplicationMain {
 
                 if(gameContinues) {
                     // if game did not end computer should discard
+                    if(devModeOn) {
                     game.discardTileForComputer();
+                    }
                     game.passTurnToNextPlayer();
                 }else{
 
