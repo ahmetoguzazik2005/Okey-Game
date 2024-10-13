@@ -1,12 +1,13 @@
-import java.util.Random;
+
 import java.util.Scanner;
 
 public class ApplicationMain {
+    public static char devMode;
+    public static boolean devModeOn;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         OkeyGame game = new OkeyGame();
-        Random random = new Random();
 
         System.out.print("Please enter your name: ");
         String playerName = sc.next();
@@ -23,9 +24,9 @@ public class ApplicationMain {
 
         // developer mode is used for seeing the computer players hands, to be used for debugging
         System.out.print("Play in developer's mode with other player's tiles visible? (Y/N): ");
-        char devMode = sc.next().charAt(0);
+        devMode = sc.next().charAt(0);
         devMode=Character.toUpperCase(devMode);
-        boolean devModeOn = devMode == 'Y';
+        devModeOn = devMode == 'Y';
         
         boolean firstTurn = true;
         boolean gameContinues = true;
@@ -130,7 +131,6 @@ public class ApplicationMain {
                     }
                     while(playerChoice  < 0 || playerChoice > 14);
                     game.discardTile(playerChoice);
-
                     game.passTurnToNextPlayer();
                 }
                 else{
@@ -151,12 +151,10 @@ public class ApplicationMain {
 
                 if(gameContinues) {
                     // if game did not end computer should discard
-                    if(devModeOn) {
+                    
                     game.discardTileForComputer();
-                    }
+                    
                     game.passTurnToNextPlayer();
-                }else{
-
                 }
 
             }

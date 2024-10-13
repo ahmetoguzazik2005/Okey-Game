@@ -274,9 +274,14 @@ public class OkeyGame {
         }
         if ( !howManyCopy.isEmpty() ){
             if ( howManyCopy.get(0) >= 2){
-                System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+                if ( ApplicationMain.devModeOn ){
+                    System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+                }
                 discardTile(indexesOf.get(0));
-                displayCurrentPlayersTiles();
+                if ( ApplicationMain.devModeOn ){
+                     displayCurrentPlayersTiles();   
+                }
+                
                 return;
             }
 
@@ -302,7 +307,9 @@ public class OkeyGame {
             }           
         } 
         if ( indexesOf.size() > 0 ){
-            System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+            if ( ApplicationMain.devModeOn ){
+                System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+            }
             discardTile(indexesOf.get(0));
             displayCurrentPlayersTiles();
             return;
@@ -342,7 +349,9 @@ public class OkeyGame {
             }
         }
         if ( indexesOf.size() > 0 ){
-            System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+            if ( ApplicationMain.devModeOn ){
+                System.out.println("Discarded tile: "+playerTiles[indexesOf.get(0)]);
+            }
             discardTile(indexesOf.get(0));
             displayCurrentPlayersTiles();
             return;
