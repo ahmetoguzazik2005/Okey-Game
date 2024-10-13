@@ -1,4 +1,4 @@
-import java.util.Random;
+//import java.util.Random;
 import java.util.Scanner;
 
 public class ApplicationMain {
@@ -6,7 +6,7 @@ public class ApplicationMain {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         OkeyGame game = new OkeyGame();
-        Random random = new Random();
+        //Random random = new Random();
 
         System.out.print("Please enter your name: ");
         String playerName = sc.next();
@@ -31,19 +31,25 @@ public class ApplicationMain {
         boolean gameContinues = true;
         int playerChoice = -1;
         int firstRoundBuffer = 0;
+        int tourCounter = 0;
+        int turnCounter = 1;
 
         while(gameContinues) {
             System.out.println("----------------------------------------------------------------------------------------");
         
             
             int currentPlayer = game.getCurrentPlayerIndex();
-            
-            System.out.println(game.getCurrentPlayerName() + "'s turn.");
+            if(turnCounter == 5){turnCounter = 1;}
+            System.out.println("Tour: " + ((tourCounter/4)+1) + "   Turn: " + turnCounter);
+            tourCounter++;
+            turnCounter++;
+            System.out.println(game.getCurrentPlayerName() + "'s turn");
             
             if(currentPlayer == 0) {
                 // this is the human player's turn
                     game.displayCurrentPlayersTiles();
                 //game.displayDiscardInformation();
+                game.displayDiscardInformation();
                 
                 System.out.println("What will you do?");
 
@@ -156,10 +162,11 @@ public class ApplicationMain {
                     }
                     game.passTurnToNextPlayer();
                 }else{
-
+                    
                 }
 
             }
         }
+        sc.close();
     }
 }
